@@ -29,6 +29,7 @@ export API_GCP_TRIGGERS=https://cloudbuild.googleapis.com/v1/projects/${GCP_PROJ
 ```
 curl -X POST ${API_GH_HOOKS} \
   -H "$GITHUB_AUTH" \
+  -H "Content-Type: application/json" \
   -d @<(( echo "cat <<EOF" ; cat github-hook.json ; echo EOF ) | sh)
 
 curl -H "${GITHUB_AUTH}" ${API_GH_HOOKS}
@@ -41,6 +42,7 @@ echo ${GITHUB_HOOK}
 ```
 curl -X POST ${API_GH_KEYS} \
   -H "${GITHUB_AUTH}" \
+  -H "Content-Type: application/json" \
   -d @<(( echo "cat <<EOF" ; cat github-key.json ; echo EOF ) | sh)
 
 curl -H "${GITHUB_AUTH}" ${API_GH_KEYS}
