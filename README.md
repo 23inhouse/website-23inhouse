@@ -1,5 +1,13 @@
 # Add the github repo mirror into GCP
 
+### Create a github token
+
+Go to https://github.com/settings/tokens and `Generate token`
+
+```
+export GITHUB_AUTH="Authorization: token WRITE-YOUR-TOKEN-HERE!!!"
+```
+
 ### Setup some ENVS
 ```
 export GITHUB_USER=23inhouse
@@ -15,15 +23,6 @@ export API_GH_KEYS     =https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REP
 export API_GH_HOOKS    =https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/hooks
 export API_GCP_REPOS   =https://sourcerepo.googleapis.com/v1/${GCP_PROJECT}/repos
 export API_GCP_TRIGGERS=https://cloudbuild.googleapis.com/v1/projects/${GCP_PROJECT_ID}/triggers
-```
-
-### Create a github token
-
-Go to https://github.com/settings/tokens and `Generate token`
-
-```
-export GITHUB_AUTH="Authorization: token YOUR-TOKEN"
-curl -H "$GITHUB_AUTH" ${API_GH_KEYS}
 ```
 
 ### Create mirroring webhook
