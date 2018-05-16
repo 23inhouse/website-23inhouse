@@ -1,0 +1,13 @@
+{
+  "triggerTemplate": {
+    "projectId": "${GCP_PROJECT_ID}",
+    "repoName": "pipeline-infrastructure-production",
+    "branchName": "master"
+  },
+  "description": "pipeline-production-deployment",
+  "substitutions": {
+    "_CLOUDSDK_COMPUTE_ZONE": "${GCP_COMPUTE_ZONE}",
+    "_CLOUDSDK_CONTAINER_CLUSTER": "production"
+  },
+  "filename": "cloudbuild.yaml"
+}

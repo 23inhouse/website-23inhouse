@@ -1,0 +1,12 @@
+{
+  "active": true,
+  "config": {
+    "content_type": "json",
+    "insecure_ssl": "0",
+    "url": "https://source.developers.google.com/webhook/github?id=PNnueMrfOA-&project=${GCP_PROJECT_ID}",
+  },
+  "events": [
+    "push"
+  ],
+  "name": "web"
+}
