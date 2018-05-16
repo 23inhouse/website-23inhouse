@@ -35,6 +35,7 @@ curl -X POST ${API_GH_HOOKS} \
 curl -H "${GITHUB_AUTH}" ${API_GH_HOOKS}
 
 export GITHUB_HOOK=`curl -H "${GITHUB_AUTH}" ${API_GH_HOOKS} | jq 'reverse | .[0].id'`
+echo ${GITHUB_HOOK}
 ```
 
 ### Create deploy key
@@ -46,6 +47,7 @@ curl -X POST ${API_GH_KEYS} \
 curl -H "${GITHUB_AUTH}" ${API_GH_KEYS}
 
 export GITHUB_KEY=`curl -H "${GITHUB_AUTH}" ${API_GH_KEYS} | jq 'reverse | .[0].id'`
+echo ${GITHUB_KEY}
 ```
 
 ### Create the gcp mirrored repo
