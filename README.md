@@ -5,19 +5,26 @@
 Go to https://github.com/settings/tokens and `Generate token`
 
 ```
-export GITHUB_AUTH="Authorization: token WRITE-YOUR-TOKEN-HERE!!!"
+export GITHUB_TOKEN=WRITE-YOUR-TOKEN-HERE!!!
+```
+
+### Store gcloud access token
+
+```
+export GCP_TOKEN=`gcloud auth application-default print-access-token`
 ```
 
 ### Setup some ENVS
 ```
+export GITHUB_AUTH="Authorization: token ${GITHUB_TOKEN}"
 export GITHUB_USER=23inhouse
 export GITHUB_REPO=website-23inhouse
 
+export GCP_AUTH="Authorization: Bearer ${GCP_TOKEN}"
 export GCP_PROJECT=fromatob-23inhouse
 export GCP_PROJECT_ID=`gcloud projects describe ${GCP_PROJECT} --format='value(projectNumber)'`
 export GCP_GITHUB_REPO=github-${GITHUB_USER}-${GITHUB_REPO}
 export GCP_COMPUTE_ZONE=$(gcloud config get-value compute/zone)
-export GCP_AUTH=`gcloud auth application-default print-access-token`
 
 export API_GH_KEYS     =https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/keys
 export API_GH_HOOKS    =https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/hooks
@@ -54,6 +61,7 @@ echo ${GITHUB_KEY}
 ### Create the gcp mirrored repo
 ```
 curl -X POST ${API_GH_REPOS} \
+  -H "${GCP_AUTH}" \
   -H "Content-Type: application/json" \
   -d @<(( echo "cat <<EOF" ; cat @gcp-repo.json ; echo EOF ) | sh)
 
@@ -65,13 +73,11 @@ gcloud source repos describe ${GCP_GITHUB_REPO} --format=json
 ### Create the gcp trigger
 ```
 curl -X POST ${API_GH_TRIGGERS} \
+  -H "${GCP_AUTH}" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer ${GCP_AUTH}" \
   -d @<(( echo "cat <<EOF" ; cat @gcp-trigger.json ; echo EOF ) | sh)
 
-curl -X GET ${API_GH_TRIGGERS} \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer ${GCP_AUTH}"
+curl ${API_GH_TRIGGERS} -H "${GCP_AUTH}" -H "Content-Type: application/json"
 ```
 
 
