@@ -26,9 +26,9 @@ export GCP_PROJECT_ID=`gcloud projects describe ${GCP_PROJECT} --format='value(p
 export GCP_GITHUB_REPO=github-${GITHUB_USER}-${GITHUB_REPO}
 export GCP_COMPUTE_ZONE=$(gcloud config get-value compute/zone)
 
-export API_GH_KEYS     =https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/keys
-export API_GH_HOOKS    =https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/hooks
-export API_GCP_REPOS   =https://sourcerepo.googleapis.com/v1/${GCP_PROJECT}/repos
+export API_GH_KEYS=https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/keys
+export API_GH_HOOKS=https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/hooks
+export API_GCP_REPOS=https://sourcerepo.googleapis.com/v1/${GCP_PROJECT}/repos
 export API_GCP_TRIGGERS=https://cloudbuild.googleapis.com/v1/projects/${GCP_PROJECT_ID}/triggers
 ```
 
