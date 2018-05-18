@@ -4,5 +4,5 @@
     "url": "ssh://git@github.com/${GITHUB_USER}/${GITHUB_REPO}.git",
     "webhookId": "${GITHUB_HOOK}"
   },
-  "name": "projects/${GCP_PROJECT_ID}/repos/${GCP_GITHUB_REPO}",
+  "name": "projects/${GCP_PROJECT}/repos/${GCP_GITHUB_REPO}"
 }
