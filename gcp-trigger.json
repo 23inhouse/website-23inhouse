@@ -1,10 +1,10 @@
 {
   "triggerTemplate": {
     "projectId": "${GCP_PROJECT_ID}",
-    "repoName": "pipeline-infrastructure-production",
+    "repoName": "${GCP_GITHUB_REPO}",
     "branchName": "master"
   },
-  "description": "pipeline-production-deployment",
+  "description": "${GCP_GITHUB_REPO}-deployment",
   "substitutions": {
     "_CLOUDSDK_COMPUTE_ZONE": "${GCP_COMPUTE_ZONE}",
     "_CLOUDSDK_CONTAINER_CLUSTER": "production"
