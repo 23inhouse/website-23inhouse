@@ -1,5 +1,5 @@
 {
-  "key": "ssh-rsa AAAA...",
+  "key": "${GITHUB_SSHRSA}",
   "read_only": true,
   "title": "Google Connected Repository"
 }
